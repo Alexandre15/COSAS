@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Várias Opções</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 20px;
+        }
+        form {
+            max-width: 600px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Formulário de Várias Opções</h2>
+<form action="#" method="post">
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" name="nome" required>
+
+    <label for="email">E-mail:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label>Gênero:</label>
+    <label><input type="radio" name="genero" value="masculino" required> Masculino</label>
+    <label><input type="radio" name="genero" value="feminino"> Feminino</label>
+    <label><input type="radio" name="genero" value="outro"> Outro</label>
+
+    <label>Interesses:</label>
+    <label><input type="checkbox" name="interesses" value="tecnologia"> Tecnologia</label>
+    <label><input type="checkbox" name="interesses" value="esportes"> Esportes</label>
+    <label><input type="checkbox" name="interesses" value="arte"> Arte</label>
+    <label><input type="checkbox" name="interesses" value="musica"> Música</label>
+
+    <label for="pais">País:</label>
+    <select id="pais" name="pais">
+        <option value="brasil">Brasil</option>
+        <option value="portugal">Portugal</option>
+        <option value="estados_unidos">Estados Unidos</option>
+        <option value="outro">Outro</option>
+    </select>
+
+    <label for="mensagem">Mensagem:</label>
+    <textarea id="mensagem" name="mensagem" rows="4"></textarea>
+
+    <button type="submit">Enviar</button>
+</form>
+
+</body>
+</html>

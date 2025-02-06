@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitação</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .titulo {
+            display: flex;
+            justify-content: space-between;
+            max-width: 800px;
+            height: 95vh;
+            margin: auto;
+            padding: 0;
+            background-color: aquamarine;
+        }
+
+        img {
+            width: 200px;
+            height: 100px;
+            border-radius: 5px;
+            margin: 8px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-left: 60px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="solicitacao">
+        <div class="titulo">
+            <h2>SOLICITAÇÃO DE APROVAÇÃO PRÉVIA</h2>
+            <img src="eaton_logo.jpg" alt="image/jpeg">
+        </div>
+        <div class="local">
+            <form action="locais">
+                <label for="cnpj">CNPJ:</label>
+                <select id="cnpj" name="cnpj">
+                    <option value="sertec">SERTEC INDUSTRIA MECANICA LTDA</option>
+                    <option value="portugal">Portugal</option>
+                    <option value="estados_unidos">Estados Unidos</option>
+                    <option value="outro">Outro</option>
+                </select>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
