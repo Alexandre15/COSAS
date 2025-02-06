@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salvar Dados com localStorage</title>
+</head>
+<body>
+    <h1>Formulário de Cadastro</h1>
+    <form id="meuFormulario">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required>
+        <br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <br>
+        <button type="submit">Adicionar</button>
+    </form>
+
+    <h2>Dados Salvos:</h2>
+    <pre id="dadosSalvos"></pre>
+
+    <script>
+        // Função para atualizar a exibição dos dados salvos
+        function atualizarDadosSalvos() {
+            const dadosSalvos = document.getElementById('dadosSalvos');
+            const dados = JSON.parse(localStorage.getItem('dados')) || [];
+            dadosSalvos.textContent = JSON.stringify(dados, null, 2);
+        }
+
+        // Atualiza a exibição ao carregar a página
+        atualizarDadosSalvos();
+
+        document.getElementById('meuFormulario').addEventListener('submit', function(event) {
+            event.preventDefault(); // Impede o envio padrão do formulário
+
+            // Captura os dados do formulário
+            const nome = document.getElementById('nome').value;
+            const email = document.getElementById('email').value;
+
+            // Recupera os dados existentes do localStorage
+            const dados = JSON.parse(localStorage.getItem('dados')) || [];
+
+            // Adiciona os novos dados ao array
+            dados.push({ nome, email });
+
+            // Salva os dados atualizados no localStorage
+            localStorage.setItem('dados', JSON.stringify(dados));
+
+            // Limpa os campos do formulário após o envio
+            document.getElementById('meuFormulario').reset();
+
+            // Atualiza a exibição dos dados salvos
+            atualizarDadosSalvos();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo de IndexedDB</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #clientes {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cadastro de Clientes</h1>
+    <form id="meuFormulario">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required>
+        <br>
+        <button type="submit">Adicionar Cliente</button>
+    </form>
+
+    <h2>Clientes Cadastrados:</h2>
+    <ul id="clientes"></ul>
+
+    <script>
+        // Abrir o banco de dados
+        const request = indexedDB.open("MeuBancoDeDados", 1);
+
+        request.onupgradeneeded = function(event) {
+            const db = event.target.result;
+            const objectStore = db.createObjectStore("clientes", { keyPath: "id", autoIncrement: true });
+            objectStore.createIndex("nome", "nome", { unique: false });
+        };
+
+        request.onsuccess = function(event) {
+            const db = event.target.result;
+            console.log("Banco de dados aberto com sucesso!");
+
+            // Listar clientes ao abrir o banco de dados
+            listarClientes(db);
+        };
+
+        request.onerror = function(event) {
+            console.error("Erro ao abrir o banco de dados:", event.target.error);
+        };
+
+        // Função para adicionar cliente
+        document.getElementById('meuFormulario').addEventListener('submit', function(event) {
+            event.preventDefault(); // Impede o envio padrão do formulário
+
+            const nome = document.getElementById('nome').value;
+
+            const request = indexedDB.open("MeuBancoDeDados", 1);
+            request.onsuccess = function(event) {
+                const db = event.target.result;
+                const transaction = db.transaction("clientes", "readwrite");
+                const objectStore = transaction.objectStore("clientes");
+
+                const cliente = { nome: nome };
+                const addRequest = objectStore.add(cliente);
+
+                addRequest.onsuccess = function() {
+                    console.log("Cliente adicionado com sucesso!");
+                    document.getElementById('meuFormulario').reset(); // Limpa o formulário
+                    listarClientes(db); // Atualiza a lista de clientes
+                };
+
+                addRequest.onerror = function(event) {
+                    console.error("Erro ao adicionar cliente:", event.target.error);
+                };
+            };
+        });
+
+        // Função para listar clientes
+        function listarClientes(db) {
+            const transaction = db.transaction("clientes", "readonly");
+            const objectStore = transaction.objectStore("clientes");
+
+            const getAllRequest = objectStore.getAll();
+
+            getAllRequest.onsuccess = function(event) {
+                const clientes = event.target.result;
+                const clientesList = document.getElementById('clientes');
+                clientesList.innerHTML = ''; // Limpa a lista antes de atualizar
+
+                clientes.forEach(cliente => {
+                    const li = document.createElement('li');
+                    li.textContent = `Nome: ${cliente.nome} `;
+                    
+                    // Botão para excluir cliente
+                    const deleteButton = document.createElement('button');
+                    deleteButton.textContent = 'Excluir';
+                    deleteButton.onclick = function() {
+                        excluirCliente(cliente.id);
+                    };
+                    li.appendChild(deleteButton);
+                    clientesList.appendChild(li);
+                });
+            };
+
+            getAllRequest.onerror = function(event) {
+                console.error("Erro ao listar clientes:", event.target.error);
+            };
+        }
+
+        // Função para excluir cliente
+        function excluirCliente(id) {
+            const request = indexedDB.open("MeuBancoDeDados", 1);
+
+            request.onsuccess = function(event) {
+                const db = event.target.result;
+                const transaction = db.transaction("clientes", "readwrite");
+                const objectStore = transaction.objectStore("clientes");
+
+                const deleteRequest = objectStore.delete(id);
+
+                deleteRequest.onsuccess = function() {
+                    console.log("Cliente excluído com sucesso!");
+                    listarClientes(db); // Atualiza a lista de clientes
+                };
+
+                deleteRequest.onerror = function(event) {
+                    console.error("Erro ao excluir cliente:", event.target.error);
+                };
+            };
+        }
+    </script>
+</body>
+</html>
