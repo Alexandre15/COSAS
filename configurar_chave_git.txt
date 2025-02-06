@@ -1,0 +1,64 @@
+Passo 1: Verifique se a chave SSH foi gerada
+Primeiro, verifique se você tem uma chave SSH gerada:
+
+1. Abra o terminal (Prompt de Comando, PowerShell ou Git Bash).
+
+2. Execute o seguinte comando: ls -al ~/.ssh
+
+Você deve ver arquivos como id_rsa (chave privada) e id_rsa.pub (chave pública). Se não houver esses arquivos, você precisará gerar uma nova chave SSH.
+
+/======================================================================/
+
+Passo 2: Gerar uma nova chave SSH (se necessário)
+Se você não tiver uma chave SSH, siga estas etapas para gerar uma:
+
+1. No terminal, execute o seguinte comando (substitua seu_email@example.com pelo seu e-mail):
+
+ssh-keygen -t rsa -b 4096 -C "seu_email@example.com"
+
+2. Quando solicitado a "Enter file in which to save the key", pressione Enter para aceitar o local padrão (~/.ssh/id_rsa).
+
+3. Você pode definir uma senha para a chave, mas isso é opcional. Se não quiser, apenas pressione Enter.
+
+/======================================================================/
+
+Passo 3: Adicionar a chave SSH ao agente SSH
+
+1. Inicie o agente SSH: eval $(ssh-agent -s)
+
+2. Adicione sua chave SSH ao agente: ssh-add ~/.ssh/id_rsa
+
+/======================================================================/
+
+Passo 4: Copiar a chave pública
+Agora você precisa copiar a chave pública para adicioná-la ao GitHub:
+
+1. Use o seguinte comando para copiar a chave pública para a área de transferência: clip < ~/.ssh/id_rsa.pub
+
+(Se você estiver usando um terminal diferente, pode abrir o arquivo "id_rsa.pub" em um editor de texto e copiar manualmente.)
+
+/======================================================================/
+
+Passo 5: Adicionar a chave SSH ao GitHub
+1. Faça login na sua conta do GitHub.
+2. Vá para Configurações (Settings).
+3. No menu à esquerda, clique em SSH and GPG keys.
+4. Clique no botão New SSH key.
+5. Cole a chave pública que você copiou no campo "Key".
+6. Dê um título à chave (por exemplo, "Meu Laptop") e clique em Add SSH key.
+
+/======================================================================/
+
+Passo 6: Testar a conexão novamente
+Após adicionar a chave SSH ao GitHub, teste a conexão novamente: ssh -T git@github.com
+
+Se tudo estiver configurado corretamente, você deve ver uma mensagem como:
+
+Hi username! You've successfully authenticated, but GitHub does not provide shell access.
+
+/======================================================================/
+
+Passo 7: Verifique as permissões da chave SSH
+Se você ainda estiver enfrentando problemas, verifique se as permissões da sua chave SSH estão corretas. Execute o seguinte comando:
+
+chmod 600 ~/.ssh/id_rsa
