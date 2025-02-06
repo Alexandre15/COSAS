@@ -3,6 +3,8 @@ import sqlite3
 
 app = Flask(__name__)
 
+
+
 # Função para conectar ao banco de dados
 def get_db_connection():
     conn = sqlite3.connect('database.db')
@@ -38,4 +40,4 @@ def init_db():
 
 if __name__ == '__main__':
     init_db()  # Cria a tabela se não existir
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000)
