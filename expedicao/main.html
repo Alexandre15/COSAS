@@ -15,41 +15,48 @@
             <h1>REGISTRO DE SAÍDA - DANFE</h1>
         </header>
         <div class="transportadora">
-            <div class="trans">
-                <form action="info">
-                    <label for="cnpj">TRANSPORTADORA:</label>
-                    <select id="cnpj" name="cnpj" class="caixasdeinput">
-                        <option value="pituta">TRANSPORTADORA PITUTA</option>
-                        <option value="braspress">BRASPRESS TRANSP URGENTES LTDA1</option>
-                        <option value="fedex">FEDEX</option>
-                        <option value="cargocenter">CARGOCENTER AGENCIA DE CARGAS LTDA</option>
-                        <option value="unidao">UNIDAO TRANSPORTES E LOGISTICA LTDA</option>
-                        <option value="vesper">VESPER AGENCIA DE CARGAS</option>
-                        <option value="furlong">TRANSPORTE FURLONG DO BRASIL S/A - RS</option>
-                        <option value="tw">TRANSPORTADORA WALDEMAR LTDA</option>
-                        <option value="transjoi">TRANSJOI</option>
-                        <option value="madrirapido">TRANS MADRID TRANSP RAPIDO LTDA</option>
-                        <option value="prestex">PRESTEX ENCOMENDAS EXPRESSAS LTDA</option>
-                        <option value="duvale">DUVALE TRANSPORTES EIRELI</option>
-                        <option value="irapuru">IRAPURU TRANSPORTES LTDA</option>
-                        <option value="gefco">GEFCO LOGISTICA DO BRASIL LTDA - RS</option>
-                        <option value="proprio">PROPRIO</option>
-                    </select>
-                </form>
-            </div>
-            <div class="placa-data">
+            <form action="info">
+                <label for="cnpj">TRANSPORTADORA:</label>
+                <select id="cnpj" name="cnpj" class="caixasdeinput">
+                    <option value="pituta">TRANSPORTADORA PITUTA</option>
+                    <option value="braspress">BRASPRESS TRANSP URGENTES LTDA1</option>
+                    <option value="fedex">FEDEX</option>
+                    <option value="cargocenter">CARGOCENTER AGENCIA DE CARGAS LTDA</option>
+                    <option value="unidao">UNIDAO TRANSPORTES E LOGISTICA LTDA</option>
+                    <option value="vesper">VESPER AGENCIA DE CARGAS</option>
+                    <option value="furlong">TRANSPORTE FURLONG DO BRASIL S/A - RS</option>
+                    <option value="tw">TRANSPORTADORA WALDEMAR LTDA</option>
+                    <option value="transjoi">TRANSJOI</option>
+                    <option value="madrirapido">TRANS MADRID TRANSP RAPIDO LTDA</option>
+                    <option value="prestex">PRESTEX ENCOMENDAS EXPRESSAS LTDA</option>
+                    <option value="duvale">DUVALE TRANSPORTES EIRELI</option>
+                    <option value="irapuru">IRAPURU TRANSPORTES LTDA</option>
+                    <option value="gefco">GEFCO LOGISTICA DO BRASIL LTDA - RS</option>
+                    <option value="proprio">PROPRIO</option>
+                </select>
+
                 <label for="placa">PLACA: </label>
                 <input type="text" name="placa" id="placa" class="caixasdeinput">
                 <label for="data">DATA: </label>
                 <input type="date" name="data" id="data" class="caixasdeinput">
-            </div>
+            </form>
         </div>
 
         <div class="nome">
             <label for="nome">NOME: </label>
             <input type="text" name="nomemotora" id="nomemotora" class="caixasdeinput">
-            <label for="horaatual">DATA e HORA: </label>
+            <label for="horaatual">HORA: </label>
             <input type="datetime-local" name="dataatual" id="dataatual" class="caixasdeinput">
+        </div>
+
+        <div class="obs">
+            <label for="obs">OBS.: </label>
+            <input type="text" name="obs" id="obs" class="caixasdeinput">
+        </div>
+
+        <div class="chavenf">
+            <label for="chavenf">CHAVE DE ACESSO: </label>
+            <input type="text" name="chavenf" id="chavenf" class="caixasdeinput">
         </div>
     </div>
 </body>

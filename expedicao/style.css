@@ -35,18 +35,43 @@ h1 {
 }
 
 .transportadora {
-    display: inline-flex;
     margin-bottom: 20px;
+    text-align: left;
+    margin-left: 30px;
 }
 
 #nomemotora {
-    min-width: 355px;
+    min-width: 425px;
 }
 
 .caixasdeinput {
-    border-color: blue;
     border-radius: 4px;
+    margin-right: 10px;
+    border: 2px solid blue;
 }
+
+.obs > input {
+    margin-top: 20px;
+    min-width: 84%;
+    min-height: 50px;
+}
+
+.nome {
+    text-align: left;
+    margin-left: 30px;
+}
+
+.obs {
+    text-align: left;
+    margin-left: 30px;
+}
+
+.chavenf {
+    min-width: 200px;
+    text-align: left;
+    margin-left: 30px;
+}
+
 
 select {
     min-width: 200px;
