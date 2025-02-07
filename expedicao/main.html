@@ -12,11 +12,11 @@
     <div class="registronf">
         <header>
             <img src="eaton_logo.jpg" alt="imagem/jpg">
-            <h1>REGISTRO DE SAÍDA - DANFE</h1>
+            <h1><strong>REGISTRO DE SAÍDA - DANFE</strong></h1>
         </header>
         <div class="transportadora">
             <form action="info">
-                <label for="cnpj">TRANSPORTADORA:</label>
+                <label for="cnpj"><strong>TRANSPORTADORA:</strong></label>
                 <select id="cnpj" name="cnpj" class="caixasdeinput">
                     <option value="pituta">TRANSPORTADORA PITUTA</option>
                     <option value="braspress">BRASPRESS TRANSP URGENTES LTDA1</option>
@@ -35,28 +35,37 @@
                     <option value="proprio">PROPRIO</option>
                 </select>
 
-                <label for="placa">PLACA: </label>
+                <label for="placa"><strong>PLACA:</strong> </label>
                 <input type="text" name="placa" id="placa" class="caixasdeinput">
-                <label for="data">DATA: </label>
+                <label for="data"><strong>DATA:</strong> </label>
                 <input type="date" name="data" id="data" class="caixasdeinput">
             </form>
         </div>
 
         <div class="nome">
-            <label for="nome">NOME: </label>
+            <label for="nome"><strong>NOME:</strong> </label>
             <input type="text" name="nomemotora" id="nomemotora" class="caixasdeinput">
-            <label for="horaatual">HORA: </label>
+            <label for="horaatual"><strong>HORA:</strong> </label>
             <input type="datetime-local" name="dataatual" id="dataatual" class="caixasdeinput">
         </div>
 
         <div class="obs">
-            <label for="obs">OBS.: </label>
+            <label for="obs"><strong>OBS.:</strong> </label>
             <input type="text" name="obs" id="obs" class="caixasdeinput">
         </div>
 
         <div class="chavenf">
-            <label for="chavenf">CHAVE DE ACESSO: </label>
+            <label for="chavenf"><strong>CHAVE DE ACESSO:</strong> </label>
             <input type="text" name="chavenf" id="chavenf" class="caixasdeinput">
+        </div>
+
+        <div class="dadoschave">
+            <label for="dadoschave"><strong>Nro DANFE</strong>
+            <input type="text" name="dadoschave" id="dadoschave" class="caixasdeinput">
+            <label for="serie"><strong>SÉRIE</strong></label>
+            <input type="text" name="serie" id="serie" class="caixasdeinput">
+            <label for="emissao"><strong>EMISSÃO</strong></label>
+            <input type="text" name="emissao" id="emissao" class="caixasdeinput">
         </div>
     </div>
 </body>
