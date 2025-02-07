@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Dados a um JSON</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            margin-bottom: 10px;
+            padding: 5px;
+            width: 200px;
+        }
+
+        button {
+            padding: 8px 12px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        pre {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border: 1px solid #ccc;
+            max-width: 500px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Adicionar Dados a um JSON</h1>
+    <form id="formDados">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" required>
+        <label for="idade">Idade:</label>
+        <input type="number" id="idade" required>
+        <button type="submit">Adicionar</button>
+    </form>
+    <h2>JSON Atualizado:</h2>
+    <pre id="jsonExibido"></pre>
+
+    <script>
+        // JSON inicial
+        let json = [
+            { nome: "João", idade: 25 },
+            { nome: "Maria", idade: 30 }
+        ];
+
+        // Função para exibir o JSON na página
+        function exibirJSON() {
+            document.getElementById('jsonExibido').textContent = JSON.stringify(json, null, 2);
+        }
+
+        // Evento do formulário para adicionar dados
+        document.getElementById('formDados').addEventListener('submit', (event) => {
+            event.preventDefault(); // Evita o recarregamento da página
+
+            // Capturar os valores do formulário
+            const nome = document.getElementById('nome').value;
+            const idade = parseInt(document.getElementById('idade').value);
+
+            // Adicionar o novo dado ao JSON
+            json.push({ nome, idade });
+
+            // Exibir o JSON atualizado
+            exibirJSON();
+
+            // Limpar o formulário
+            document.getElementById('formDados').reset();
+        });
+
+        // Exibir o JSON inicial ao carregar a página
+        exibirJSON();
+    </script>
+</body>
+
+</html>

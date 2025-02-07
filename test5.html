@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Salvar Dados no SharePoint</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <form id="dataForm">
+        <label for="title">Título:</label>
+        <input type="text" id="title" name="title" required>
+        <button type="submit">Salvar</button>
+    </form>
+
+    <script>
+        $(document).ready(function () {
+            // Obter o token de digestão
+            $.ajax({
+                url: "https://<seu-site-sharepoint>/_api/contextinfo",
+                type: "POST",
+                headers: {
+                    "Accept": "application/json;odata=verbose"
+                },
+                success: function (data) {
+                    $('#__REQUESTDIGEST').val(data.d.GetContextWebInformation.FormDigestValue);
+                },
+                error: function (error) {
+                    alert('Erro ao obter o token de digestão: ' + JSON.stringify(error));
+                }
+            });
+
+            $('#dataForm').on('submit', function (e) {
+                e.preventDefault();
+                var title = $('#title').val();
+
+                $.ajax({
+                    url: "https://<seu-site-sharepoint>/_api/web/lists/getbytitle('<nome-da-lista>')/items",
+                    type: "POST",
+                    contentType: "application/json;odata=verbose",
+                    data: JSON.stringify({
+                        '__metadata': { 'type': 'SP.Data.<nome-da-lista>ListItem' },
+                        'Title': title
+                    }),
+                    headers: {
+                        "Accept": "application/json;odata=verbose",
+                        "X-RequestDigest": $('#__REQUESTDIGEST').val(),
+                        "IF-MATCH": "*",
+                        "X-HTTP-Method": "POST"
+                    },
+                    success: function (data) {
+                        alert('Dados salvos com sucesso!');
+                    },
+                    error: function (error) {
+                        alert('Erro ao salvar dados: ' + JSON.stringify(error));
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
