@@ -40,4 +40,4 @@ def init_db():
 
 if __name__ == '__main__':
     init_db()  # Cria a tabela se não existir
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=8080, debug=True)

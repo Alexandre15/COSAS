@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Load CSV from URL</title>
+</head>
+<body>
+    <button id="loadCsvButton">Load CSV</button>
+    <pre id="output"></pre>
+    <select id="dataSelect"></select>
+
+    <script>
+        document.getElementById('loadCsvButton').addEventListener('click', function() {
+            fetch('C:/Users/e0616587/COSAS/data.csv')
+                .then(response => response.text())
+                .then(data => {
+                    const parsedData = parseCSV(data);
+                    document.getElementById('output').textContent = JSON.stringify(parsedData, null, 2);
+                })
+                .catch(error => console.error('Error loading CSV:', error));
+        });
+
+        function parseCSV(text) {
+            const rows = text.split('\n');
+            return rows.map(row => row.split(','));
+        }
+
+        function populateSelect(data) {
+            const select = document.getElementById('dataSelect');
+            select.innerHTML = ''; // Limpa opções anteriores
+            data.forEach(row => {
+                const option = document.createElement('option');
+                option.value = row[0]; // Define o valor da opção
+                option.textContent = row[1]; // Define o texto da opção
+                select.appendChild(option);
+            });
+        }
+    </script>
+</body>
+</html>

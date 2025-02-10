@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carregar CSV em Select</title>
+</head>
+<body>
+    <h1>Carregar CSV em Select</h1>
+    <input type="file" id="fileInput" accept="data.csv">
+    <br><br>
+    <select id="dataSelect">
+        <option value="">Selecione uma opção</option>
+    </select>
+
+    <script>
+        document.getElementById('fileInput').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const contents = e.target.result;
+                    processCSV(contents);
+                };
+                reader.readAsText(file);
+            }
+        });
+
+        function processCSV(data) {
+            const lines = data.split('\n');
+            const select = document.getElementById('dataSelect');
+
+            // Limpa as opções existentes
+            select.innerHTML = '<option value="">Selecione uma opção</option>';
+
+            // Adiciona as opções do CSV ao select
+            lines.forEach(line => {
+                const values = line.split(',');
+                values.forEach(value => {
+                    const option = document.createElement('option');
+                    option.value = value.trim();
+                    option.textContent = value.trim();
+                    select.appendChild(option);
+                });
+            });
+        }
+    </script>
+</body>
+</html>
