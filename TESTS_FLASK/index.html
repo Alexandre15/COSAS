@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ler CSV do Servidor Python</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Conteúdo do Arquivo CSV do Servidor Python</h1>
+    <div id="csvTableContainer"></div>
+
+    <script>
+        // URL do servidor Flask
+        const serverUrl = "http://127.0.0.1:5000/get-csv"; // Altere se necessário
+
+        // Função para carregar o CSV
+        function loadCSV() {
+            fetch("http://127.0.0.1:5000/get-csv")
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Erro ao obter o arquivo CSV');
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    processarCSV(data);
+                })
+                .catch(error => {
+                    console.error('Erro:', error);
+                    document.getElementById('csvTableContainer').innerText = 'Erro ao carregar o arquivo CSV.';
+                });
+        }
+
+        // Função para processar o conteúdo do CSV
+        function processarCSV(data) {
+            const linhas = data.split('\n'); // Divide o conteúdo em linhas
+            const tabela = document.createElement('table'); // Cria uma tabela HTML
+
+            linhas.forEach((linha, index) => {
+                const tr = document.createElement('tr'); // Cria uma nova linha da tabela
+                const colunas = linha.split(','); // Divide a linha em colunas
+
+                colunas.forEach(coluna => {
+                    const td = document.createElement('td'); // Cria uma nova célula
+                    td.textContent = coluna; // Define o conteúdo da célula
+                    tr.appendChild(td); // Adiciona a célula à linha
+                });
+
+                tabela.appendChild(tr); // Adiciona a linha à tabela
+            });
+
+            // Limpa o conteúdo anterior e adiciona a nova tabela
+            const container = document.getElementById('csvTableContainer');
+            container.innerHTML = ''; // Limpa o conteúdo anterior
+            container.appendChild(tabela); // Adiciona a tabela ao container
+        }
+
+        // Carrega o CSV automaticamente ao carregar a página
+        window.onload = loadCSV;
+    </script>
+</body>
+
+</html>
