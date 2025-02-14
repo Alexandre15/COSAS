@@ -31,7 +31,7 @@ h1 {
 }
 
 #placa {
-    width: 100px;
+    width: 95px;
 }
 
 .transportadora {
@@ -41,7 +41,7 @@ h1 {
 }
 
 #nomemotora {
-    min-width: 428px;
+    min-width: 405px;
 }
 
 .caixasdeinput {
@@ -84,17 +84,20 @@ h1 {
 }
 
 #dadoschave {
-    max-width: 150px;
+    max-width: 100px;
 }
 
 #serie {
-    max-width: 150px;
+    max-width: 50px;
 }
 
 #emissao {
-    max-width: 150px;
+    max-width: 100px;
 }
 
+#usuario {
+    max-width: 105px;
+}
 
 select {
     min-width: 200px;
