@@ -4,8 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OUTSIDE</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: gray;
+        }
+
+        .corpo {
+            width: 1000px;
+            height: 85vh;
+            margin: 40px auto;
+            padding: 10px;
+            background-color: rgb(68, 68, 68);
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .disp {
+            display: inline-block;
+            margin: 50px 20px 10px 20px;
+            background-color: black;
+            border: 3px solid transparent;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .disp:hover {
+            border: 3px solid rgb(97, 218, 251);
+            box-shadow: 0 0 90px 10px rgba(97, 218, 251, 0.7), 0 0 20px 10px rgba(97, 218, 251, 0.7), inset 0 0 50px 10px rgba(97, 218, 251);
+            border-color: rgba(97, 218, 251); /* Cor da borda ao passar o mouse */
+            border-style: solid; /* Define o estilo da borda */
+        }
+
+        .box1 {
+            width: 300px;
+            height: 300px;
+            border-radius: 10px;
+        }
+
+        .box2 {
+            width: 300px;
+            height: 300px;
+            border-radius: 10px;
+        }
+
+        .box3 {
+            width: 300px;
+            height: 300px;
+            border-radius: 10px;
+        }
+
+        .box4 {
+            width: 300px;
+            height: 300px;
+            border-radius: 10px;
+        }
+
+    </style>
+
 </head>
 <body>
-    
+    <div class="corpo">
+        <div class="box1 disp"></div>
+        <div class="box2 disp"></div>
+        <div class="box3 disp"></div>
+        <div class="box4 disp"></div>
+    </div>
 </body>
 </html>
