@@ -10,9 +10,13 @@
             margin: 0;
             padding: 0;
             background-color: gray;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
         .corpo {
+            display: flex; /* Usando flexbox para layout */
+            flex-wrap: wrap; /* Permite que as caixas se movam para a próxima linha */
+            justify-content: center; /* Centraliza as caixas */
             width: 1000px;
             height: 85vh;
             margin: 40px auto;
@@ -21,45 +25,29 @@
         }
 
         .disp {
-            display: inline-block;
-            margin: 50px 20px 10px 20px;
+            display: flex;
+            margin: 20px; /* Margem reduzida para melhor espaçamento */
             background-color: white;
             border: 3px solid transparent;
-            transition: box-shadow 0.3s ease;
+            transition: box-shadow 0.3s ease, border-color 0.3s ease;
         }
 
         .disp:hover {
             border: 3px solid rgb(97, 218, 251);
-            box-shadow: 0 0 90px 10px rgba(97, 218, 251, 0.7), 0 0 20px 10px rgba(97, 218, 251, 0.7), inset 0 0 50px 10px rgba(97, 218, 251);
+            box-shadow: 0 0 90px 20px rgba(97, 218, 251, 0.7), 
+                        0 0 30px 15px rgba(97, 218, 251, 0.5), 
+                        inset 0 0 50px 10px rgba(97, 218, 251, 0.5);
             border-color: rgba(97, 218, 251); /* Cor da borda ao passar o mouse */
-            border-style: solid; /* Define o estilo da borda */
         }
 
-        .box1 {
+        .box1, .box2, .box3, .box4 {
             width: 300px;
             height: 300px;
             border-radius: 10px;
-            margin-left: 15vw;
-        }
+            background-color: white; /* Cor de fundo levemente transparente */
+            justify-content: center;
+            align-items: center;
 
-        .box2 {
-            width: 300px;
-            height: 300px;
-            border-radius: 10px;
-
-        }
-
-        .box3 {
-            width: 300px;
-            height: 300px;
-            border-radius: 10px;
-            margin-left: 15vw;
-        }
-
-        .box4 {
-            width: 300px;
-            height: 300px;
-            border-radius: 10px;
         }
 
     </style>
@@ -68,17 +56,11 @@
 <body>
     <div class="corpo">
         <div class="box1 disp">
-            
+            <h1><a href="https://eaton-my.sharepoint.com/personal/alexandrelfagundes_eaton_com/Documents/Documents/MINE/CONTROLE_EXTERNO.xlsb?web=1" target="_blank" rel="noopener noreferrer">OUTSIDE</a></h1>
         </div>
-        <div class="box2 disp">
-
-        </div>
-        <div class="box3 disp">
-
-        </div>
-        <div class="box4 disp">
-
-        </div>
+        <div class="box2 disp"></div>
+        <div class="box3 disp"></div>
+        <div class="box4 disp"></div>
     </div>
 </body>
 </html>
