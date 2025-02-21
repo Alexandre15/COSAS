@@ -1,47 +1,43 @@
 @charset "UTF-8";
 
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
     background-color: grey;
+    font-size: small;
 }
 
 header {
     padding: 20px;
-    position: relative;
-    display: inline-flex;
 }
 
-img {
-    margin-right: 30px;
+.logoeaton {
+    display: inline-block;
 }
 
-h1 {
-    justify-content: right;
+.titulo {
+    display: inline-block;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+
+
+.menu {
+    background-color: aqua;
 }
 
 .registronf {
     max-width: 800px;
     height: 93vh;
     background-color: white;
-    text-align: center;
     margin: 30px auto;
     border-radius: 10px;
-}
-
-#placa {
-    width: 95px;
-}
-
-.transportadora {
-    margin-bottom: 20px;
-    text-align: left;
-    margin-left: 30px;
-}
-
-#nomemotora {
-    min-width: 405px;
 }
 
 .caixasdeinput {
@@ -49,65 +45,4 @@ h1 {
     margin-right: 10px;
     border: 2px solid blue;
     min-height: 20px;
-}
-
-.obs > input {
-    margin-top: 20px;
-    min-width: 673px;
-    min-height: 50px;
-}
-
-.nome {
-    text-align: left;
-    margin-left: 30px;
-}
-
-.obs {
-    text-align: left;
-    margin-left: 30px;
-}
-
-.chavenf {
-    text-align: left;
-    margin-left: 30px;
-    margin-top: 60px;
-}
-
-#chavenf {
-    min-width: 560px;
-}
-
-.dadoschave {
-    margin-top: 20px;
-    text-align: left;
-    margin-left: 30px;
-}
-
-#dadoschave {
-    max-width: 100px;
-}
-
-#serie {
-    max-width: 50px;
-}
-
-#emissao {
-    max-width: 100px;
-}
-
-#usuario {
-    max-width: 105px;
-}
-
-select {
-    min-width: 200px;
-    max-width: 200px;
-}
-
-label {
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.377);
-}
-
-input {
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.336);
 }
