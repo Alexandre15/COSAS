@@ -6,10 +6,20 @@
     <title>OUTSIDE</title>
 
     <style>
+        :root {
+            --back1: rgb(17, 54, 71);
+            --back2: rgb(20, 147, 220);
+            --cor1: #014BDB;
+            --cor2: #044CF2;
+            --cor3: #045CF1;
+            --cor4: #0273F0;
+            --cor5: #0286EA;
+        }
+
         body {
             margin: 0;
             padding: 0;
-            background-color: gray;
+            background-image: linear-gradient(180deg, var(--back1), var(--back2), var(--back1));
             font-family: Arial, Helvetica, sans-serif;
         }
 
@@ -27,10 +37,12 @@
 
         .disp {
             display: flex;
-            margin: 20px; /* Margem reduzida para melhor espaçamento */
+            margin: 35px; /* Margem reduzida para melhor espaçamento */
             background-color: white;
             border: 3px solid transparent;
             transition: box-shadow 0.3s ease, border-color 0.3s ease;
+            justify-content: center;
+            align-items: center;
             
         }
 
