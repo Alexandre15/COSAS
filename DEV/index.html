@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COMPROVANTE DE COLETA</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: Calibri, sans-serif;
+        }
+
+        body {
+            background-color: whitesmoke;
+            padding-top: 20px;
+        }
+
+        .titulo > h2, img {
+            display: inline-block;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .titulo > img {
+            margin-left: 20px;
+        }
+
+        .alerta {
+            margin-top: 30px;
+        }
+
+        .alerta > p {
+            vertical-align: middle;
+        }
+
+        .alerta > img, p {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        .alerta > img {
+            width: 60px;
+            height: 60px;
+            margin-left: 20px;
+        }
+
+        .dados_nfs > h3 {
+            display: inline-block;
+        }
+
+        .titulo_tabela {
+            background-color: black;
+            max-width: 400px;
+            min-width: 400px;
+        }
+
+        table {
+            border-collapse: collapse;
+            min-width: 660px;
+            margin: 20px auto 0px auto;
+            color: white;
+        }
+
+        .main {
+            max-width: 700px;
+            min-height: 800px;
+            box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.315);
+            border-radius: 5px;
+            margin: 0 auto;
+            background-color: white;
+            padding-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <header>
+            <div class="titulo">
+                <img src="eaton-logo-small.png" alt="imagem/png">
+                <h2><strong>COMPROVANTE DE COLETA/ENTREGA</strong></h2>
+            </div>
+            <div class="alerta">
+                <img src="alerta.jpg" alt="imagem/jpeg">
+                <p>Confira se a relação abaixo corresponde as notas fiscais recebidas e carregadas.<br>
+                Assine somente após o carregamento e conferência.</p>
+            </div>
+        </header>
+        <main>
+            <section class="notas">
+                <div class="dados_nfs">
+                    <table>
+                        <tr class="titulo_tabela">
+                            <th>CHAVE DE ACESSO</th>
+                            <th>NOTA FISCAL</th>
+                            <th>SERIE</th>
+                        </tr>
+                        <tr>
+                            <td class="chave">@{triggerBody()?['varCHAVE']}</td>
+                            <td class="nf">@{triggerBody()?['varNF']}</td>
+                            <td class="">@{triggerBody()?['varSERIE']}</td>
+                        </tr>
+                    </table>
+                </div>
+            </section>
+        </main>
+        <footer>
+        </footer>
+    </div>
+</body>
+</html>
