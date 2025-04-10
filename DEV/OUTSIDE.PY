@@ -1,41 +1,72 @@
-from time import sleep
-# PROCESSO DE OUTSIDE
+# PROCESSO DE OUTSIDE PEDIDO ABERTO
 
-# 1° Analise shortage
-
-shortage = ["sertec", "javer", "usicol", "comsaldo", "semsaldo"]
-
-def movimentarJob(qtd, item):
-    print("=-"*15)
-    print(f"Movimentado o item: {item}")
-    print(f"Quantidade: {qtd}")
-    print("=-"*15)
-    return True
+class outAberto:
+    def __init__(self, item, quantidade, coleta, destino):
+        self.item = item
+        self.quantidade = quantidade
+        self.coleta = coleta
+        self.destino = destino
 
 
-def gerarNF(qtd, volume):
-    print("=-"*15)
-    print("Nota gerada")
-    print(f"Quantidade: {qtd}")
-    print(f"Volumes: {volume}")
-    print("=-"*15)
-    return True
+    def movimentarJob(item, quantidade):
+        print("=-"*15)
+        print(f"Movimentado o item: {item}")
+        print(f"Quantidade: {quantidade}")
+        print("=-"*15)
+        return True
 
 
-def solicitarFrete(coleta, destino):
-    print(f"Coleta na {coleta} para entregar na {destino}")
-    return True
+    def gerarNF(quantidade, volumes):
+        print("Nota gerada")
+        print(f"Quantidade: {quantidade}")
+        print(f"Volumes: {volumes}")
+        print("=-"*15)
+        return True
 
 
-def cobrarMaterial(item, qtd, data):
-    print("Cobrar material dos processos anteriores")
+    def solicitarFrete(coleta, destino):
+        print(f"Coleta na {coleta} para entregar na {destino}")
+        return True
 
 
-for itens in shortage:
-    if itens=="comsaldo":
+    def cobrarMaterial(item, quantidade):
+        print("Cobrar material dos processos anteriores")
+        print(f"Cobrar planejador item {item} = {quantidade}")
+        print("Solicitar prazo")
+        print("Acompanhar entrega do processo anterior/planejador, para posterior envio")
+
+
+    def temsaldo():
+        saldo = str(input("O item que você analisou tem demanda e saldo? ( sim / não ): ")).lower()
+        return saldo
+
+
+def outsideAberto():
+    print("=-"*40)
+    print("Analisar shortage de OUTSIDE dentre os 90 PN quais tem demanda/saldo")
+    print("=-"*40)
+
+    saldo = outAberto.temsaldo()
+
+    if saldo=="sim":
         print("Mandar para OUTSIDE")
-        if movimentarJob(500, "3313867-SA") == True:
-            if gerarNF(500, 6) == True:
-                solicitarFrete("Eaton", "Grefortec")
+        print("Solicitar movimentação física")
+        if outAberto.movimentarJob(500, "3313867-SA") == True:
+            if outAberto.gerarNF(500, 6) == True:
+                outAberto.solicitarFrete("Eaton", "Grefortec")
+                print("Acompanhar com fornecedor o prazo de retorno do material para planta, considerando o Lead time")
     else:
         print("Não temos saldo disponível")
+        outAberto.cobrarMaterial(3313867, 500)
+        retorno = str(input("Recebemos o material/dentro do prazo? (Sim, não): ")).lower()
+
+        if retorno=="sim":
+            print("Solicitar movimentação física")
+            if outAberto.movimentarJob(500, "3313867-SA") == True:
+                if outAberto.gerarNF(500, 6) == True:
+                    outAberto.solicitarFrete("Eaton", "Grefortec")
+                    print("Acompanhar com fornecedor o prazo de retorno do material para planta, considerando o Lead time")
+        else:
+            print("Escalonar/Sinalizar/Pedir ajuda")
+
+outsideAberto()
